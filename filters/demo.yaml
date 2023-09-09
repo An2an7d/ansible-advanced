@@ -2,6 +2,8 @@
   hosts: localhost
   vars:
     NAME: Venkata Anand
+    website: "https://github.com/An2an7d/ansible-advanced"
+    greeting: "hello,how are you"
   tasks:
   - name: convert into upper case
     debug:
@@ -14,3 +16,11 @@
   - name: printing undefined variable
     debug:
       msg: "course is {{COURSE|default('Devops')}}"
+
+  - name: extract hostname
+    debug:
+      msg: "{{website|urlsplit('hostname')}}"
+  
+  - name: split
+    debug:
+      msg: "{{greeting|split(',')}}"
