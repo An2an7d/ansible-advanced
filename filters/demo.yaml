@@ -1,0 +1,16 @@
+- name: demo on filters
+  hosts: localhost
+  vars:
+    NAME: Venkata Anand
+  tasks:
+  - name: convert into upper case
+    debug:
+      msg: "upper case: {{NAME|upper}}"
+  
+  - name: convert into lower case
+    debug:
+      msg: "lower case: {{NAME|lower}}"
+
+  - name: printing undefined variable
+    debug:
+      msg: "course is {{COURSE|default('Devops')}}"
