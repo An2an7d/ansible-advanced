@@ -1,0 +1,15 @@
+- name: understand facts
+  hosts: ubuntu:centos
+  become: yes
+  tasks:
+  - name: printing facts
+    debug:
+      msg: "All facts: {{ansible_facts}}"
+
+  - name: add user
+    command: adduser anand
+    when: ansible_facts['distribution']  == "Ubuntu"
+
+  - name: add user
+    command: useradd anand
+    when: ansible_facts['distribution']  == "CentOS"
